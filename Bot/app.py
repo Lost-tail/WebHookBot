@@ -20,8 +20,8 @@ def make_resp():
     	chat_text = result['message']['text']
     	chat_id = result['message']['chat']['id']
     except:
-	chat_text = ''
-	chat_id = result['my_chat_member']['chat']['id']
+        chat_text = ''
+        chat_id = result['my_chat_member']['chat']['id']
     if Bot.status=='name':
         Bot.name = chat_text
         Bot.status = 'dom'

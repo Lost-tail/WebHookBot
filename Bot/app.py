@@ -54,7 +54,7 @@ def make_resp():
             pass
     if username==target_name and message:
         return target.message_response(message).json()
-    else:
+    elif chat_id!='/start':
         text = stranger[random.randint(0,len(stranger)-1)]
         return Bot.send_message(chat_id, text).json()
     

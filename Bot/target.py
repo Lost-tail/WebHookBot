@@ -19,18 +19,18 @@ class Target(DataBase):
             text = 'Псс... Это ведь ты, Оля Олеговна? У меня для тебя кое что есть.'
             reply = self.bot.make_keyboard(['Да, это я', 'Нет, ты ошибся'])
             self.add_status('1')
-            return self.Bot.send_message(chat_id, text, reply)
+            return self.bot.send_message(chat_id, text, reply)
         elif self.get_status=='done':
-            return self.Bot.send_message(chat_id, self.get_synonum(message['text']))
+            return self.bot.send_message(chat_id, self.get_synonum(message['text']))
         elif self.get_status=='manual':
-            return self.Bot.send_message(chat_id, '')
+            return self.bot.send_message(chat_id, '')
         elif self.get_status=='data':
             text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. 
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
             self.add_status('done')
-            return self.Bot.send_message(chat_id, text)
+            return self.bot.send_message(chat_id, text)
         else:
-            return self.Bot.send_message(chat_id, target[random.randint(0,len(target)-1)])
+            return self.bot.send_message(chat_id, target[random.randint(0,len(target)-1)])
             
         
     def keyboard_response(self, callback):
@@ -52,7 +52,7 @@ class Target(DataBase):
                 Так что, ты спасешь меня?)"""
             reply = self.bot.make_keyboard(['Испытать судьбу', 'Упустить шанс', 'Перенести на другое время'])
             self.add_status('2')
-            return self.Bot.send_message(chat_id, text, reply)
+            return self.bot.send_message(chat_id, text, reply)
         
         elif self.get_status=='2':
             if data == 'Испытать судьбу':
@@ -73,7 +73,7 @@ class Target(DataBase):
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
                 self.add_status('done')
                 reply = None
-            return self.Bot.send_message(chat_id, text, reply)
+            return self.bot.send_message(chat_id, text, reply)
             
         elif self.get_status=='3':
             if data == 'Не устраивают варианты':
@@ -83,7 +83,7 @@ class Target(DataBase):
                 text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. 
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
                 self.add_status('done')
-            return self.Bot.send_message(chat_id, text)
+            return self.bot.send_message(chat_id, text)
     def get_synonum(self, text):
         synonums = []
         header = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0',}

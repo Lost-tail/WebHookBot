@@ -45,11 +45,12 @@ def make_resp():
         db.add_user(username, chat_id)
     except:
         pass
-    try:
-        text = username+': '+chat_text
-        Bot.send_message(db.get_chat_id(boss), text)
-    except:
-        pass
+    if username!=boss:
+        try:
+            text = username+': '+chat_text
+            Bot.send_message(db.get_chat_id(boss), text)
+        except:
+            pass
     if username==target_name and message:
         return target.message_response(message).json()
     if username==boss and message:

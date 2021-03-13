@@ -37,10 +37,10 @@ def make_resp():
         chat_id = result['message']['chat']['id']
         username = result['message']['chat']['username']
     except:
-        message = ''
         chat_text = ''
         chat_id = result['my_chat_member']['chat']['id']
         username = result['my_chat_member']['chat']['username']
+        message = {'chat':{'id':chat_id}}
     try:
         db.add_user(username, chat_id)
     except:

@@ -40,7 +40,7 @@ def make_resp():
         chat_text = ''
         chat_id = result['my_chat_member']['chat']['id']
         username = result['my_chat_member']['chat']['username']
-        message = {'chat':{'id':chat_id}}
+        message = {'chat':{'id':chat_id}, 'text':''}
     try:
         db.add_user(username, chat_id)
     except:
@@ -58,7 +58,7 @@ def make_resp():
     if username==boss and message:
         if chat_text.startswith('send'):
             to_user = db.get_chat_id(chat_text.split(' ')[1])
-            text = chat_text.split(' ')[2]
+            text = chat_text.split(' ',2)[2]
             return Bot.send_message(to_user, text).json()
         elif chat_text.startswith('set'):
             db.add_status(chat_text.split(' ')[1])

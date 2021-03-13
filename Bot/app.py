@@ -37,7 +37,7 @@ def make_resp():
         chat_id = result['message']['chat']['id']
         username = result['message']['chat']['username']
     except:
-        return 200
+        return 'ok', 200
     try:
         db.add_user(username, chat_id)
     except:

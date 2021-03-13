@@ -31,7 +31,6 @@ def make_resp():
         except:
             pass
         return target.keyboard_response(callback).json()
-    
     try:
         message = result['message']
         chat_text = result['message']['text']
@@ -46,6 +45,7 @@ def make_resp():
         db.add_user(username, chat_id)
     except:
         pass
+        
     if username!=boss:
         try:
             text = username+': '+chat_text
@@ -54,6 +54,10 @@ def make_resp():
             pass
     if username==target_name and message:
         return target.message_response(message).json()
+    else:
+        text = stranger[random.randint(0,len(stranger)-1)]
+        return Bot.send_message(chat_id, text).json()
+    
     if username==boss and message:
         if chat_text.startswith('send'):
             to_user = db.get_chat_id(chat_text.split(' ')[1])
@@ -65,8 +69,6 @@ def make_resp():
             db.drop_status()
         elif chat_text.startswith('show'):
             return Bot.send_message(db.get_chat_id(boss), db.get_status()).json()
-    text = stranger[random.randint(0,len(stranger)-1)]
-    return Bot.send_message(chat_id, text).json()
     
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=443, ssl_context=('webhook_cert.pem','webhook_pkey.pem'))

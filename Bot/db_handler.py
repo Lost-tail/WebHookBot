@@ -103,3 +103,7 @@ class DataBase():
             return result[0]
         else:
             return result
+
+if __name__=='__main__':
+    db = DataBase()
+    db.create_tables()

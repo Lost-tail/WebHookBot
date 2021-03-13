@@ -31,10 +31,11 @@ def make_resp():
         except:
             pass
         return target.keyboard_response(callback).json()
+    
     try:
         message = result['message']
-    	chat_text = result['message']['text']
-    	chat_id = result['message']['chat']['id']
+        chat_text = result['message']['text']
+        chat_id = result['message']['chat']['id']
         username = result['message']['chat']['username']
     except:
         chat_text = ''

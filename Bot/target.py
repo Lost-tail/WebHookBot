@@ -14,17 +14,18 @@ class Target(DataBase):
         
     def message_response(self, message):
         chat_id = message['chat']['id']
+        status = self.get_status()
         if message['text']=='/start':
             self.drop_status()
             text = 'Псс... Это ведь ты, Оля Олеговна? У меня для тебя кое что есть.'
             reply = self.bot.make_keyboard(['Да, это я', 'Нет, ты ошибся'])
             self.add_status('1')
             return self.bot.send_message(chat_id, text, reply)
-        elif self.get_status=='done':
+        elif status=='done':
             return self.bot.send_message(chat_id, self.get_synonum(message['text']))
-        elif self.get_status=='manual':
+        elif status=='manual':
             return self.bot.send_message(chat_id, '')
-        elif self.get_status=='data':
+        elif status=='data':
             text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. 
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
             self.add_status('done')
@@ -36,7 +37,8 @@ class Target(DataBase):
     def keyboard_response(self, callback):
         chat_id = callback['from']['id']
         data = callback['data']
-        if self.get_status=='1':
+        status = self.get_status()
+        if status=='1':
             if data == 'Да, это я':
                 text = """Пришлось использовать посредника, чтобы найти тебя. Только ты можешь мне помочь. Мой хозяин сказал, что не отпустит меня пить пиво пока я не уговорю тебя придти 15.04.21 в 18:00 сюда https://goo.gl/maps/7yNcv1UGkSWycrXB7, представляешь?? Так жестоко((
                 Возможно тебе немного страшно, но если ты не придешь, одним счастливым ботом станет меньше(
@@ -54,7 +56,7 @@ class Target(DataBase):
             self.add_status('2')
             return self.bot.send_message(chat_id, text, reply)
         
-        elif self.get_status=='2':
+        elif status=='2':
             if data == 'Испытать судьбу':
                 text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. 
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
@@ -75,7 +77,7 @@ class Target(DataBase):
                 reply = None
             return self.bot.send_message(chat_id, text, reply)
             
-        elif self.get_status=='3':
+        elif status=='3':
             if data == 'Не устраивают варианты':
                 text = """Напиши свою дату одним предложением (только не вторник, пожалуйста))"""
                 self.add_status('data')

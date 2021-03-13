@@ -6,7 +6,7 @@ class DataBase():
         pass
         
     def create_connection(self):
-        connection = sqlite3.connect(os.path.abspath(__file__).rsplit('\\',1)[0] + '\\db.sqlite')
+        connection = sqlite3.connect('db.sqlite')
         return connection
      
     def execute_query(self, query):

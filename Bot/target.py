@@ -86,6 +86,8 @@ class Target(DataBase):
                 Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
                 self.add_status('done')
             return self.bot.send_message(chat_id, text)
+        return self.bot.send_message(chat_id, 'Я запутался, давай начнем сначала. Набери /start')
+      
     def get_synonum(self, text):
         synonums = []
         header = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0',}

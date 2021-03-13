@@ -12,12 +12,12 @@ token = token
 Bot = Bot(token)
 db = DataBase()
 target = Target()
+target_name = 'tail43'
+boss = 'L_tail'
 
 @app.route('/{}'.format(token),methods=["POST"])
 def make_resp():
     result = request.json
-    target_name = 'tail43'
-    boss = 'L_tail'
     print(result)
     callback = result.get('callback_query')
     if callback:

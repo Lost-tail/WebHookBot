@@ -91,6 +91,6 @@ class Target(DataBase):
                     synonums.append(data[random.randint(0,len(data)-1)])
                 except:
                     synonums.append('Не нашел')
-        return ''.join(synonums)
+        return ' '.join(synonums)
             
             

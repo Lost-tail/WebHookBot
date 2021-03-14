@@ -57,7 +57,9 @@ def make_resp():
             text = chat_text.split(' ',2)[2]
             return Bot.send_message(to_user, text).json()
         elif chat_text.startswith('set'):
-            db.add_status(chat_text.split(' ')[1])
+            try:
+                db.add_status(chat_text.split(' ')[1])
+            except:pass
         elif chat_text.startswith('drop'):
             db.drop_status()
         elif chat_text.startswith('show'):

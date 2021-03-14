@@ -16,7 +16,7 @@ target = Target()
 @app.route('/{}'.format(token),methods=["POST"])
 def make_resp():
     result = request.json
-    target_name = 'tail43'
+    target_name = 'olika1205'
     boss = 'L_tail'
     callback = result.get('callback_query')
     if callback:

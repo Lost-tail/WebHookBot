@@ -17,8 +17,8 @@ class Target(DataBase):
         status = self.get_status()
         if message['text']=='/start':
             self.drop_status()
-            text = 'Псс... Это ведь ты, Оля Олеговна? У меня для тебя кое что есть.'
-            reply = self.bot.make_keyboard(['Да, это я', 'Нет, ты ошибся'])
+            text = 'some answer1'
+            reply = self.bot.make_keyboard(['butt1', 'butt2'])
             self.add_status('1')
             return self.bot.send_message(chat_id, text, reply)
         elif status=='done':
@@ -26,8 +26,7 @@ class Target(DataBase):
         elif status=='manual':
             return self.bot.send_message(chat_id, '')
         elif status=='data':
-            text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. Если что, пиши мне. Я все передам хозяину.
-Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
+            text = """some answer2"""
             self.add_status('done')
             return self.bot.send_message(chat_id, text)
         else:
@@ -39,40 +38,28 @@ class Target(DataBase):
         data = callback['data']
         status = self.get_status()
         if status=='1':
-            if data == 'Да, это я':
-                text = """Пришлось использовать посредника, чтобы найти тебя. Только ты можешь мне помочь. Мой хозяин сказал, что не отпустит меня пить пиво пока я не уговорю тебя придти 20.03.21 в 18:00 сюда https://goo.gl/maps/7yNcv1UGkSWycrXB7, представляешь?? Так жестоко((
-Возможно тебе немного страшно, но если ты не придешь, одним счастливым ботом станет меньше(
-Не переживай, хозяин не злой, почти. 
-И да, хозяин предпринял все, чтобы ты не узнала, кто он до встречи)
-Так что, ты спасешь меня?)"""
-            elif data == 'Нет, ты ошибся':
-                text = """Я знаю, что это ты, Оля))
-Пришлось использовать посредника, чтобы найти тебя. Только ты можешь мне помочь. Мой хозяин сказал, что не отпустит меня пить пиво пока я не уговорю тебя придти 20.03.21 в 18:00 сюда https://goo.gl/maps/7yNcv1UGkSWycrXB7, представляешь?? Так жестоко((
-Возможно тебе немного страшно, но если ты не придешь, одним счастливым ботом станет меньше(
-Не переживай, хозяин не злой, почти. 
-И да, хозяин предпринял все, чтобы ты не узнала, кто он до встречи)
-Так что, ты спасешь меня?)"""
-            reply = self.bot.make_keyboard(['Испытать судьбу', 'Упустить шанс', 'Перенести на другое время'])
+            if data == 'butt1':
+                text = """some answer3"""
+            elif data == 'butt2':
+                text = """some answer4"""
+            reply = self.bot.make_keyboard(['butt3', 'butt4', 'butt5'])
             self.add_status('2')
             return self.bot.send_message(chat_id, text, reply)
         
         elif status=='2':
-            if data == 'Испытать судьбу':
-                text = """Бесстрашный ты мой спаситель) Когда придешь на место, поднимись на второй этаж, не мерзни. Если что, пиши мне. Я все передам хозяину.
-Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
+            if data == 'butt3':
+                text = """some answer5"""
                 self.add_status('done')
                 reply = None
-            elif data == 'Упустить шанс':
-                text = """Знаю, это страшно. Но маньяки не создают ботов) (Наверное)
-Ладно, подскажу тебе. Ты знакома с хозяином. Давай же, настало время отбросить страхи!) Так что, поможешь мне?)"""
-                reply = self.bot.make_keyboard(['Испытать судьбу', 'Нет'])
-            elif data == 'Перенести на другое время':
-                text = """Напиши свою дату и время одним предложением, например 15.03 20:00 (только не вторник, пожалуйста))"""
+            elif data == 'butt4':
+                text = """some answer6"""
+                reply = self.bot.make_keyboard(['butt6', 'butt7'])
+            elif data == 'butt5':
+                text = """some answer7"""
                 self.add_status('data')
                 reply = None
-            elif data == 'Нет':
-                text = """Разбиваешь мое роботизированное сердце. Если передумаешь, напиши /start. 
-Развлечь тебя? Я умею рифмовать покруче рэперов) Напиши любое слово, желательно, чтобы оно существовало)"""
+            elif data == 'butt7':
+                text = """some answer8"""
                 self.add_status('done')
                 reply = None
             return self.bot.send_message(chat_id, text, reply)
